@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Racer 02 🏁</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main id="juego">
+
+    <!-- ==========================================
+         PANTALLA 1 - INICIO
+    =========================================== -->
+
+    <section id="inicio" class="pantalla activa">
+
+        <p class="fecha">
+            30.09.2026
+        </p>
+
+        <h1>
+            Tengo algo para ti...
+        </h1>
+
+        <p class="subtitulo">
+            Dicen que hoy toca regalar carritos.
+            <br>
+            Pero yo quería hacerlo diferente.
+        </p>
+
+        <button id="botonArrancar">
+            ARRANCAR 🏁
+        </button>
+
+    </section>
+
+
+    <!-- ==========================================
+         PANTALLA 2 - CARRERA
+    =========================================== -->
+
+    <section id="carrera" class="pantalla">
+
+        <div class="cabecera-carrera">
+
+            <div>
+
+                <p class="piloto">
+                    TU PILOTO
+                </p>
+
+                <h2>
+                    RACER 02
+                </h2>
+
+            </div>
+
+
+            <!-- VELOCÍMETRO -->
+
+            <div class="velocimetro">
+
+                <span id="velocidad">
+                    0
+                </span>
+
+                <small>
+                    km/h
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRESO DE LA CARRERA -->
+
+        <div class="progreso-contenedor">
+
+            <div id="barraProgreso"></div>
+
+            <span class="inicio-pista">
+                🏎️
+            </span>
+
+            <span class="fin-pista">
+                🏁
+            </span>
+
+        </div>
+
+
+        <!-- CUENTA REGRESIVA -->
+
+        <div id="cuentaRegresiva"></div>
+
+
+        <!-- PISTA -->
+
+        <div id="pista">
+
+
+            <!-- DESTELLO FINAL -->
+
+            <div id="destelloMeta"></div>
+
+
+            <!-- LÍNEAS DE LA PISTA -->
+
+            <div class="lineas-pista">
+
+                <div class="linea"></div>
+                <div class="linea"></div>
+                <div class="linea"></div>
+                <div class="linea"></div>
+                <div class="linea"></div>
+                <div class="linea"></div>
+
+            </div>
+
+
+            <!-- META -->
+
+            <div class="meta-pista">
+
+                <div class="poste-meta"></div>
+
+                <span>
+                    🏁
+                </span>
+
+            </div>
+
+
+            <!-- HUMO DEL AUTO -->
+
+            <div id="humo">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <!-- RACER 02 -->
+
+            <div id="auto">
+
+                <img
+                    src="imagenes/carro02.png"
+                    alt="Racer 02">
+
+            </div>
+
+        </div>
+
+
+        <!-- INSTRUCCIÓN -->
+
+        <p
+            id="instruccionPedal"
+            class="instruccion">
+
+            Mantén presionado el pedal para acelerar.
+
+        </p>
+
+
+        <!-- PEDAL -->
+
+        <button
+            id="pedal"
+            class="pedal"
+            disabled>
+
+            <span class="pedal-icono">
+                🏎️
+            </span>
+
+            <span>
+                MANTÉN PARA ACELERAR
+            </span>
+
+        </button>
+
+    </section>
+
+
+    <!-- ==========================================
+         PANTALLA 3 - LLEGADA A META
+    =========================================== -->
+
+    <section id="meta" class="pantalla">
+
+        <p class="bandera">
+            🏁
+        </p>
+
+        <h1>
+            ¡Llegaste a la meta!
+        </h1>
+
+
+        <p class="mensaje-monito">
+
+            Pero esto todavía no termina,
+
+            <br>
+
+            <strong>
+                mi monito precioso ❤️
+            </strong>
+
+        </p>
+
+
+        <p class="pista-regalo">
+
+            Hay una última sorpresa
+            esperándote...
+
+        </p>
+
+
+        <button id="descubrir">
+
+            CONTINUAR ❤️
+
+        </button>
+
+    </section>
+
+
+    <!-- ==========================================
+         PANTALLA 4 - REGALO
+    =========================================== -->
+
+    <section id="regalo" class="pantalla">
+
+        <p class="pequeno">
+
+            Parece que llegaste hasta aquí...
+
+        </p>
+
+
+        <h1>
+
+            Pero todavía falta abrir algo.
+
+        </h1>
+
+
+        <button
+            id="cajaRegalo"
+            class="caja-regalo"
+            aria-label="Abrir regalo">
+
+
+            <span class="tapa"></span>
+
+
+            <span class="lazo">
+                🎀
+            </span>
+
+
+            <span class="cuerpo-caja">
+                🎁
+            </span>
+
+
+        </button>
+
+
+        <p class="toca-caja">
+
+            Toca el regalo para abrirlo.
+
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         PANTALLA 5 - MENSAJE FINAL
+    =========================================== -->
+
+    <section id="revelacion" class="pantalla">
+
+
+        <p class="fecha final-fecha">
+
+            30.09.2026
+
+        </p>
+
+
+        <p class="introduccion-final">
+
+            Dicen que hoy se regalan carritos...
+
+        </p>
+
+
+        <h1 class="titulo-final">
+
+            Pero el tuyo
+            <br>
+            no podía ser cualquiera.
+
+        </h1>
+
+
+        <!-- EMBLEMA 02 -->
+
+        <div class="emblema-final">
+
+            <span>
+                02
+            </span>
+
+        </div>
+
+
+        <!-- =====================================
+             MENSAJE PERSONAL
+        ====================================== -->
+
+        <div class="carta-final">
+
+
+            <p class="saludo-final">
+
+                Mi monito precioso ❤️
+
+            </p>
+
+
+            <p class="texto-carta">
+
+                Espero que te guste este pequeño detalle
+                que hice especialmente para ti.
+
+            </p>
+
+
+            <p class="te-amo">
+
+                Te amo mucho y espero que te guste
+                todo lo que te tengo preparado. ❤️🏎️
+
+            </p>
+
+
+        </div>
+
+
+        <div class="separador">
+
+            ✦
+
+        </div>
+
+
+        <p class="mensaje-sorpresa">
+
+            Tu verdadero regalo
+            te está esperando
+
+            <strong>
+
+                fuera de esta pantalla.
+
+            </strong>
+
+            ❤️
+
+        </p>
+
+
+    </section>
+
+</main>
+
+
+<!-- ==========================================
+     SONIDO DEL MOTOR
+=========================================== -->
+
+<audio
+    id="sonidoMotor"
+    preload="auto">
+
+    <source
+        src="sonidos/motor.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- ==========================================
+     SONIDO DE RUEDAS
+=========================================== -->
+
+<audio
+    id="sonidoRuedas"
+    preload="auto"
+    loop>
+
+    <source
+        src="sonidos/ruedas.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

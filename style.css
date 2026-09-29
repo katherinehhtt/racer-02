@@ -1,0 +1,1962 @@
+/* ==================================
+   RACER 02
+   PALETA DE COLORES
+================================== */
+
+:root {
+
+    --vino: #722F37;
+    --vino-claro: #913F4B;
+    --vino-oscuro: #3D171C;
+
+    --crema: #F5E6C8;
+
+    --dorado: #D4AF37;
+    --dorado-claro: #F0D26B;
+
+    --azul-intenso: #163A70;
+    --azul-marino: #0A1F44;
+    --azul-oscuro: #050B18;
+    --azul-negro: #02040A;
+
+    --asfalto: #171C25;
+
+    --blanco: #FFFFFF;
+}
+
+
+/* ==================================
+   GENERAL
+================================== */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+html,
+body {
+
+    width: 100%;
+
+    min-height: 100%;
+}
+
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 35%,
+            #163A70 0%,
+            #0A1F44 35%,
+            #050B18 75%,
+            #02040A 100%
+        );
+
+    color:
+        var(--crema);
+
+    min-height:
+        100vh;
+
+    overflow:
+        hidden;
+
+    user-select:
+        none;
+
+    position:
+        relative;
+}
+
+
+/* ==================================
+   LUCES DE FONDO
+================================== */
+
+body::before {
+
+    content: "";
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0,153,255,.28),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(212,175,55,.18),
+            transparent 30%
+        );
+
+    pointer-events:
+        none;
+
+    z-index:
+        0;
+}
+
+
+body::after {
+
+    content: "";
+
+    position:
+        fixed;
+
+    width:
+        450px;
+
+    height:
+        450px;
+
+    right:
+        -200px;
+
+    top:
+        -200px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(0,119,255,.12);
+
+    filter:
+        blur(70px);
+
+    pointer-events:
+        none;
+}
+
+
+#juego {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+}
+
+
+/* ==================================
+   PANTALLAS
+================================== */
+
+.pantalla {
+
+    display:
+        none;
+
+    width:
+        100%;
+
+    min-height:
+        100vh;
+
+    padding:
+        30px;
+
+    text-align:
+        center;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+}
+
+
+.pantalla.activa {
+
+    display:
+        flex;
+
+    animation:
+        entradaPantalla
+        .8s ease;
+}
+
+
+@keyframes entradaPantalla {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==================================
+   TEXTOS GENERALES
+================================== */
+
+.fecha {
+
+    color:
+        var(--dorado);
+
+    letter-spacing:
+        7px;
+
+    margin-bottom:
+        25px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        bold;
+
+    text-shadow:
+
+        0 0 15px
+        rgba(212,175,55,.45);
+}
+
+
+h1 {
+
+    font-size:
+
+        clamp(
+            32px,
+            7vw,
+            70px
+        );
+
+    margin-bottom:
+        20px;
+
+    text-shadow:
+
+        0 4px 20px
+        rgba(0,0,0,.45);
+}
+
+
+.subtitulo {
+
+    line-height:
+        1.8;
+
+    opacity:
+        .90;
+
+    margin-bottom:
+        40px;
+
+    font-size:
+        18px;
+}
+
+
+/* ==================================
+   BOTONES
+================================== */
+
+button {
+
+    border:
+        none;
+
+    font-family:
+        inherit;
+}
+
+
+#botonArrancar,
+#descubrir {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--vino-claro),
+            var(--vino)
+        );
+
+    border:
+
+        2px solid
+        var(--dorado);
+
+    color:
+        var(--crema);
+
+    padding:
+        17px 35px;
+
+    border-radius:
+        40px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        2px;
+
+    cursor:
+        pointer;
+
+    transition:
+        .3s;
+
+    box-shadow:
+
+        0 8px 25px
+        rgba(0,0,0,.35),
+
+        0 0 20px
+        rgba(212,175,55,.15);
+}
+
+
+#botonArrancar:hover,
+#descubrir:hover {
+
+    transform:
+        scale(1.06);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--dorado-claro),
+            var(--dorado)
+        );
+
+    color:
+        var(--vino-oscuro);
+}
+
+
+/* ==================================
+   CABECERA CARRERA
+================================== */
+
+.cabecera-carrera {
+
+    width:
+        min(900px,95vw);
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        15px;
+
+    text-align:
+        left;
+}
+
+
+.piloto {
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        4px;
+
+    opacity:
+        .65;
+}
+
+
+.cabecera-carrera h2 {
+
+    color:
+        var(--dorado);
+
+    letter-spacing:
+        6px;
+
+    margin-top:
+        5px;
+}
+
+
+/* ==================================
+   VELOCÍMETRO
+================================== */
+
+.velocimetro {
+
+    min-width:
+        125px;
+
+    padding:
+        10px 18px;
+
+    border:
+
+        1px solid
+        rgba(245,230,200,.25);
+
+    border-radius:
+        15px;
+
+    background:
+        rgba(0,0,0,.25);
+
+    backdrop-filter:
+        blur(10px);
+
+    text-align:
+        center;
+
+    box-shadow:
+
+        0 0 25px
+        rgba(0,119,255,.15);
+}
+
+
+#velocidad {
+
+    display:
+        block;
+
+    color:
+        var(--dorado);
+
+    font-size:
+        32px;
+
+    font-weight:
+        900;
+
+    line-height:
+        1;
+}
+
+
+.velocimetro small {
+
+    font-size:
+        10px;
+
+    letter-spacing:
+        2px;
+
+    opacity:
+        .7;
+}
+
+
+/* ==================================
+   PROGRESO
+================================== */
+
+.progreso-contenedor {
+
+    position:
+        relative;
+
+    width:
+        min(850px,88vw);
+
+    height:
+        6px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border-radius:
+        10px;
+
+    margin:
+        10px 0 30px;
+}
+
+
+#barraProgreso {
+
+    width:
+        0%;
+
+    height:
+        100%;
+
+    border-radius:
+        inherit;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--vino),
+            var(--dorado)
+        );
+
+    box-shadow:
+
+        0 0 15px
+        rgba(212,175,55,.45);
+}
+
+
+.inicio-pista,
+.fin-pista {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    font-size:
+        20px;
+}
+
+
+.inicio-pista {
+
+    left:
+        -28px;
+}
+
+
+.fin-pista {
+
+    right:
+        -28px;
+}
+
+
+/* ==================================
+   CUENTA REGRESIVA
+================================== */
+
+#cuentaRegresiva {
+
+    position:
+        fixed;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index:
+        100;
+
+    font-size:
+
+        clamp(
+            80px,
+            20vw,
+            180px
+        );
+
+    font-weight:
+        900;
+
+    color:
+        var(--crema);
+
+    text-shadow:
+
+        0 0 20px
+        rgba(255,255,255,.5),
+
+        0 0 50px
+        var(--dorado);
+
+    pointer-events:
+        none;
+}
+
+
+/* ==================================
+   PISTA
+================================== */
+
+#pista {
+
+    position:
+        relative;
+
+    width:
+        min(900px,95vw);
+
+    height:
+        300px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        20px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #303845 0%,
+            #171C25 50%,
+            #090C12 100%
+        );
+
+    border-top:
+
+        5px solid
+        var(--crema);
+
+    border-bottom:
+
+        5px solid
+        var(--crema);
+
+    margin-bottom:
+        22px;
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0,0,0,.55),
+
+        0 0 30px
+        rgba(0,119,255,.12);
+}
+
+
+#pista::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+
+        linear-gradient(
+            110deg,
+            transparent 10%,
+            rgba(255,255,255,.04) 40%,
+            transparent 65%
+        );
+
+    pointer-events:
+        none;
+}
+
+
+/* ==================================
+   LÍNEAS DE PISTA
+================================== */
+
+.lineas-pista {
+
+    position:
+        absolute;
+
+    width:
+        200%;
+
+    height:
+        100%;
+
+    left:
+        0;
+
+    top:
+        0;
+}
+
+
+.linea {
+
+    position:
+        absolute;
+
+    top:
+        57%;
+
+    width:
+        120px;
+
+    height:
+        8px;
+
+    border-radius:
+        10px;
+
+    background:
+        var(--crema);
+
+    opacity:
+        .8;
+}
+
+
+.linea:nth-child(1) {
+    left: 5%;
+}
+
+.linea:nth-child(2) {
+    left: 20%;
+}
+
+.linea:nth-child(3) {
+    left: 35%;
+}
+
+.linea:nth-child(4) {
+    left: 50%;
+}
+
+.linea:nth-child(5) {
+    left: 65%;
+}
+
+.linea:nth-child(6) {
+    left: 80%;
+}
+
+
+#pista.acelerando
+.lineas-pista {
+
+    animation:
+
+        moverPista
+        .55s linear
+        infinite;
+}
+
+
+#pista.rapido
+.lineas-pista {
+
+    animation-duration:
+        .25s;
+}
+
+
+@keyframes moverPista {
+
+    from {
+
+        transform:
+            translateX(0);
+    }
+
+    to {
+
+        transform:
+            translateX(-15%);
+    }
+}
+
+
+/* ==================================
+   META
+================================== */
+
+.meta-pista {
+
+    position:
+        absolute;
+
+    right:
+        22px;
+
+    top:
+        20px;
+
+    font-size:
+        48px;
+
+    opacity:
+        .85;
+}
+
+
+.poste-meta {
+
+    position:
+        absolute;
+
+    width:
+        4px;
+
+    height:
+        190px;
+
+    right:
+        20px;
+
+    top:
+        35px;
+
+    background:
+        rgba(255,255,255,.4);
+}
+
+
+/* ==================================
+   AUTO RACER 02
+================================== */
+
+#auto {
+
+    position:
+        absolute;
+
+    left:
+        20%;
+
+    bottom:
+        24px;
+
+    width:
+        250px;
+
+    z-index:
+        10;
+
+    transition:
+        left .2s linear;
+}
+
+
+#auto img {
+
+    width:
+        100%;
+
+    display:
+        block;
+
+    filter:
+
+        drop-shadow(
+            0 15px 12px
+            rgba(0,0,0,.7)
+        );
+}
+
+
+#auto.motor-activo {
+
+    animation:
+
+        vibracionAuto
+        .10s linear
+        infinite;
+}
+
+
+@keyframes vibracionAuto {
+
+    0% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-2px);
+    }
+
+    100% {
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==================================
+   HUMO
+================================== */
+
+#humo {
+
+    position:
+        absolute;
+
+    left:
+        calc(20% - 15px);
+
+    bottom:
+        48px;
+
+    z-index:
+        5;
+
+    opacity:
+        0;
+}
+
+
+#humo.activo {
+
+    opacity:
+        1;
+}
+
+
+#humo span {
+
+    position:
+        absolute;
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,255,255,.35);
+
+    animation:
+
+        humo
+        1s ease-out
+        infinite;
+}
+
+
+#humo span:nth-child(2) {
+
+    animation-delay:
+        .25s;
+}
+
+
+#humo span:nth-child(3) {
+
+    animation-delay:
+        .5s;
+}
+
+
+@keyframes humo {
+
+    from {
+
+        opacity:
+            .7;
+
+        transform:
+            translate(0,0)
+            scale(.5);
+    }
+
+    to {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-60px,-35px)
+            scale(1.8);
+    }
+}
+
+
+/* ==================================
+   INSTRUCCIÓN
+================================== */
+
+.instruccion {
+
+    margin-bottom:
+        15px;
+
+    font-size:
+        14px;
+
+    opacity:
+        .75;
+}
+
+
+/* ==================================
+   PEDAL
+================================== */
+
+.pedal {
+
+    width:
+        min(350px,85vw);
+
+    min-height:
+        75px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    padding:
+        15px 25px;
+
+    border-radius:
+        18px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            var(--vino-claro),
+            var(--vino-oscuro)
+        );
+
+    border:
+
+        2px solid
+        var(--dorado);
+
+    color:
+        var(--crema);
+
+    font-size:
+        13px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1.5px;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+
+        0 10px 0
+        #251014,
+
+        0 15px 30px
+        rgba(0,0,0,.4);
+
+    transition:
+        .1s;
+
+    touch-action:
+        none;
+}
+
+
+.pedal:not(:disabled):active,
+.pedal.presionado {
+
+    transform:
+        translateY(8px);
+
+    box-shadow:
+
+        0 2px 0
+        #251014,
+
+        0 7px 15px
+        rgba(0,0,0,.4);
+}
+
+
+.pedal:disabled {
+
+    opacity:
+        .5;
+}
+
+
+.pedal-icono {
+
+    font-size:
+        25px;
+}
+
+
+/* ==================================
+   DESTELLO META
+================================== */
+
+#destelloMeta {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        white;
+
+    opacity:
+        0;
+
+    z-index:
+        50;
+
+    pointer-events:
+        none;
+}
+
+
+#destelloMeta.activo {
+
+    animation:
+
+        flashMeta
+        .7s ease;
+}
+
+
+@keyframes flashMeta {
+
+    0% {
+
+        opacity: 0;
+    }
+
+    30% {
+
+        opacity: .9;
+    }
+
+    100% {
+
+        opacity: 0;
+    }
+}
+
+
+/* ==================================
+   MENSAJE META
+================================== */
+
+.bandera {
+
+    font-size:
+        80px;
+
+    margin-bottom:
+        20px;
+}
+
+
+.mensaje-monito {
+
+    font-size:
+        20px;
+
+    line-height:
+        1.7;
+
+    margin-bottom:
+        12px;
+
+    opacity:
+        0;
+
+    animation:
+
+        aparecerMensaje
+        1.5s forwards;
+}
+
+
+.mensaje-monito strong {
+
+    color:
+        var(--dorado);
+
+    font-size:
+        23px;
+
+    text-shadow:
+
+        0 0 18px
+        rgba(212,175,55,.3);
+}
+
+
+.pista-regalo {
+
+    opacity:
+        0;
+
+    margin-bottom:
+        30px;
+
+    animation:
+
+        aparecerMensaje
+        1.5s forwards;
+
+    animation-delay:
+        1.2s;
+}
+
+
+@keyframes aparecerMensaje {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==================================
+   CAJA REGALO
+================================== */
+
+.pequeno {
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        2px;
+
+    color:
+        var(--dorado);
+
+    margin-bottom:
+        15px;
+}
+
+
+.caja-regalo {
+
+    position:
+        relative;
+
+    width:
+        180px;
+
+    height:
+        180px;
+
+    margin:
+        25px 0;
+
+    background:
+        transparent;
+
+    cursor:
+        pointer;
+
+    transition:
+        .3s;
+}
+
+
+.caja-regalo:hover {
+
+    transform:
+        scale(1.05);
+}
+
+
+.cuerpo-caja {
+
+    font-size:
+        120px;
+
+    display:
+        block;
+
+    animation:
+
+        cajaTemblar
+        1.2s infinite alternate;
+}
+
+
+.lazo {
+
+    position:
+        absolute;
+
+    font-size:
+        55px;
+
+    top:
+        -15px;
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index:
+        5;
+}
+
+
+.tapa {
+
+    position:
+        absolute;
+
+    width:
+        120px;
+
+    height:
+        25px;
+
+    left:
+        30px;
+
+    top:
+        35px;
+
+    background:
+        var(--dorado);
+
+    border-radius:
+        8px;
+
+    opacity:
+        .85;
+}
+
+
+@keyframes cajaTemblar {
+
+    from {
+
+        transform:
+            rotate(-3deg);
+    }
+
+    to {
+
+        transform:
+            rotate(3deg)
+            scale(1.04);
+    }
+}
+
+
+.caja-regalo.abriendo
+.cuerpo-caja {
+
+    animation:
+
+        abrirCaja
+        .8s forwards;
+}
+
+
+.caja-regalo.abriendo
+.lazo {
+
+    animation:
+
+        lanzarLazo
+        .8s forwards;
+}
+
+
+.caja-regalo.abriendo
+.tapa {
+
+    animation:
+
+        lanzarTapa
+        .8s forwards;
+}
+
+
+@keyframes abrirCaja {
+
+    to {
+
+        transform:
+            scale(1.3);
+
+        opacity:
+            0;
+    }
+}
+
+
+@keyframes lanzarLazo {
+
+    to {
+
+        transform:
+
+            translate(-50%,-100px)
+            rotate(25deg);
+
+        opacity:
+            0;
+    }
+}
+
+
+@keyframes lanzarTapa {
+
+    to {
+
+        transform:
+
+            translateY(-100px)
+            rotate(-20deg);
+
+        opacity:
+            0;
+    }
+}
+
+
+.toca-caja {
+
+    opacity:
+        .7;
+
+    animation:
+
+        pulsoTexto
+        1.5s infinite;
+}
+
+
+@keyframes pulsoTexto {
+
+    50% {
+
+        opacity:
+            .35;
+    }
+}
+
+
+/* ==================================
+   PANTALLA FINAL
+================================== */
+
+#revelacion {
+
+    overflow-y:
+        auto;
+}
+
+
+.final-fecha {
+
+    margin-bottom:
+        18px;
+}
+
+
+.introduccion-final {
+
+    font-size:
+        17px;
+
+    opacity:
+        .75;
+
+    margin-bottom:
+        15px;
+}
+
+
+.titulo-final {
+
+    font-size:
+
+        clamp(
+            35px,
+            7vw,
+            65px
+        );
+}
+
+
+/* ==================================
+   EMBLEMA 02
+================================== */
+
+.emblema-final {
+
+    width:
+        150px;
+
+    height:
+        150px;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    margin:
+        15px 0 25px;
+
+    border-radius:
+        50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #FFF7E7,
+            var(--crema)
+        );
+
+    border:
+
+        6px solid
+        var(--dorado);
+
+    box-shadow:
+
+        0 0 35px
+        rgba(212,175,55,.4),
+
+        0 0 90px
+        rgba(212,175,55,.15);
+}
+
+
+.emblema-final span {
+
+    color:
+        var(--vino);
+
+    font-size:
+        62px;
+
+    font-weight:
+        900;
+}
+
+
+/* ==================================
+   CARTA / MENSAJE PERSONAL
+================================== */
+
+.carta-final {
+
+    width:
+        min(600px,90vw);
+
+    padding:
+        30px 35px;
+
+    margin-top:
+        5px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(245,230,200,.12),
+            rgba(245,230,200,.05)
+        );
+
+    border:
+
+        1px solid
+        rgba(212,175,55,.40);
+
+    border-radius:
+        22px;
+
+    box-shadow:
+
+        0 15px 40px
+        rgba(0,0,0,.25),
+
+        0 0 35px
+        rgba(212,175,55,.10);
+
+    backdrop-filter:
+        blur(8px);
+
+    line-height:
+        1.8;
+
+    animation:
+
+        aparecerCarta
+        1.2s ease forwards;
+}
+
+
+@keyframes aparecerCarta {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+
+            translateY(25px)
+            scale(.97);
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* MI MONITO PRECIOSO */
+
+.saludo-final {
+
+    color:
+        var(--dorado);
+
+    font-size:
+        25px;
+
+    font-weight:
+        bold;
+
+    margin-bottom:
+        20px;
+
+    text-shadow:
+
+        0 0 18px
+        rgba(212,175,55,.25);
+}
+
+
+/* TEXTO DE LA CARTA */
+
+.texto-carta {
+
+    font-size:
+        17px;
+
+    line-height:
+        1.8;
+
+    margin-bottom:
+        20px;
+
+    color:
+        var(--crema);
+}
+
+
+/* TE AMO */
+
+.te-amo {
+
+    font-size:
+        18px;
+
+    line-height:
+        1.8;
+
+    font-weight:
+        bold;
+
+    color:
+        var(--crema);
+
+    margin-bottom:
+        0;
+}
+
+
+/* ==================================
+   MENSAJE SORPRESA
+================================== */
+
+.separador {
+
+    color:
+        var(--dorado);
+
+    font-size:
+        25px;
+
+    margin:
+        25px;
+}
+
+
+.mensaje-sorpresa {
+
+    max-width:
+        550px;
+
+    font-size:
+        21px;
+
+    line-height:
+        1.7;
+}
+
+
+.mensaje-sorpresa strong {
+
+    display:
+        block;
+
+    color:
+        var(--dorado);
+
+    margin-top:
+        5px;
+}
+
+
+/* ==================================
+   CELULAR
+================================== */
+
+@media
+(max-width: 600px) {
+
+
+    .pantalla {
+
+        padding:
+            20px;
+    }
+
+
+    .cabecera-carrera {
+
+        width:
+            94vw;
+    }
+
+
+    .cabecera-carrera h2 {
+
+        font-size:
+            18px;
+
+        letter-spacing:
+            4px;
+    }
+
+
+    .velocimetro {
+
+        min-width:
+            100px;
+
+        padding:
+            9px 12px;
+    }
+
+
+    #velocidad {
+
+        font-size:
+            26px;
+    }
+
+
+    #pista {
+
+        height:
+            230px;
+
+        border-radius:
+            15px;
+    }
+
+
+    #auto {
+
+        width:
+            180px;
+
+        left:
+            15%;
+    }
+
+
+    #humo {
+
+        left:
+            calc(15% - 10px);
+    }
+
+
+    .meta-pista {
+
+        font-size:
+            40px;
+    }
+
+
+    .poste-meta {
+
+        height:
+            140px;
+    }
+
+
+    .mensaje-monito {
+
+        font-size:
+            18px;
+    }
+
+
+    .mensaje-monito strong {
+
+        font-size:
+            21px;
+    }
+
+
+    .emblema-final {
+
+        width:
+            120px;
+
+        height:
+            120px;
+    }
+
+
+    .emblema-final span {
+
+        font-size:
+            50px;
+    }
+
+
+    .carta-final {
+
+        padding:
+            23px 20px;
+
+        width:
+            92vw;
+    }
+
+
+    .saludo-final {
+
+        font-size:
+            21px;
+    }
+
+
+    .texto-carta {
+
+        font-size:
+            15px;
+    }
+
+
+    .te-amo {
+
+        font-size:
+            16px;
+    }
+
+
+    .mensaje-sorpresa {
+
+        font-size:
+            18px;
+    }
+
+}
